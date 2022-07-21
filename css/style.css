@@ -70,6 +70,7 @@ a {
 .navbar .nav-link {
    color: var(--color-white) !important;
    position: relative;
+   cursor: pointer;
 }
 .navbar .nav-link.active {
    font-family: var(--lamar-font);

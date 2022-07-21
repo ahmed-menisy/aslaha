@@ -1,6 +1,6 @@
 const nav = document.querySelector("nav");
 const courses = document.querySelector("nav");
-const sections = document.querySelectorAll("section")
+const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-link");
 // Swiper Js
 var swiper = new Swiper(".mySwiper", {
@@ -45,24 +45,34 @@ var swiper2 = new Swiper(".mySwiper2", {
       dynamicBullets: true,
    },
 });
-// NavBar
+// NavBar Change Active
 document.addEventListener("scroll", function () {
-  if (scrollY >= 300) {
-    nav.classList.add("fixed-top");
- } else {
-    nav.classList.remove("fixed-top");
- }
-  let curentSec = '';
+   if (scrollY >= 300) {
+      // change nav to fixed
+      nav.classList.add("fixed-top");
+   } else {
+      nav.classList.remove("fixed-top");
+   }
+   // to change active
+   let curentSec = "";
    sections.forEach((section) => {
       if (scrollY >= section.offsetTop - 100 && section.hasAttribute("id")) {
          curentSec = section.getAttribute("id");
          navLinks.forEach((link) => {
-          link.classList.remove('active')
-          if (link.getAttribute("href").includes(curentSec)) {
-             link.classList.add('active')
-          }
-       });
+            link.classList.remove("active");
+            if (link.dataset.href.includes(curentSec)) {
+               link.classList.add("active");
+            }
+         });
       }
-     
    });
 });
+// Add Smoth Scroll By Js
+for (let i = 0; i < navLinks.length; i++) {
+   navLinks[i].addEventListener("click", function (e) {
+    scrollTo({
+      top:document.querySelector(navLinks[i].dataset.href).offsetTop - 90,
+      behavior:'smooth'
+    })
+   });
+}
