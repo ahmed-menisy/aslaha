@@ -1,5 +1,6 @@
 const nav = document.querySelector("nav");
 const courses = document.querySelector("nav");
+const sections = document.querySelectorAll("section")
 const navLinks = document.querySelectorAll(".nav-link");
 // Swiper Js
 var swiper = new Swiper(".mySwiper", {
@@ -46,16 +47,22 @@ var swiper2 = new Swiper(".mySwiper2", {
 });
 // NavBar
 document.addEventListener("scroll", function () {
-   if (scrollY >= 300) {
-      nav.classList.add("fixed-top");
-   } else {
-      nav.classList.remove("fixed-top");
-   }
-});
-// nav links
-navLinks.forEach((link) => {
-   link.addEventListener("click", function (e) {
-      link.closest("ul").querySelector(".active").classList.remove("active");
-      e.target.classList.add("active");
+  if (scrollY >= 300) {
+    nav.classList.add("fixed-top");
+ } else {
+    nav.classList.remove("fixed-top");
+ }
+  let curentSec = '';
+   sections.forEach((section) => {
+      if (scrollY >= section.offsetTop - 100 && section.hasAttribute("id")) {
+         curentSec = section.getAttribute("id");
+         navLinks.forEach((link) => {
+          link.classList.remove('active')
+          if (link.getAttribute("href").includes(curentSec)) {
+             link.classList.add('active')
+          }
+       });
+      }
+     
    });
 });
