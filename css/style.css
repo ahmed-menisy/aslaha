@@ -21,6 +21,7 @@
    --green-light: #85be9e;
    --color-black: #000000;
    --color-white: #ffffff;
+   --light-color: #c4c4c4;
    --lamar-font: lamar, sans-serif;
    --transition: all 0.5s;
 }
@@ -37,6 +38,7 @@ a {
    border-radius: 15px;
    border: none;
    outline: none;
+   font-weight: 600;
 }
 :is(.btn-green, .btn-orrange):hover {
    background-image: linear-gradient(
@@ -47,18 +49,25 @@ a {
 }
 .btn-green {
    background-color: var(--green-light);
-   padding: 0.3rem 1.5rem;
+   padding: 0.2rem 2rem;
+   font-size: 24px;
 }
 .btn-orrange {
    background-color: var(--orang-color);
-   font-size: 32px;
-   font-weight: 700;
-   padding: 0.2rem 4rem;
+   font-size: 30px;
+   padding: 0.1rem 5rem;
 }
 .main-title h2 {
    font-family: var(--lamar-font);
-   font-size: calc(40 / 16 * 1rem);
+   font-size: calc(42 / 16 * 1rem);
+   letter-spacing: 2px;
    color: var(--main-color);
+}
+section:not(header section) {
+   padding: 75px 0;
+}
+section:not(header section) .main-title h2 {
+   padding-bottom: 50px;
 }
 /* ------------- Start Fixed ------------- */
 #goTop {
@@ -76,15 +85,23 @@ a {
 /* ------------- Start NavBar ------------- */
 .navbar {
    background-color: var(--main-color);
-   padding: 1rem 0;
+}
+@media (min-width:992px) {
+   .navbar {
+      height: 80px;
+   }
 }
 .navbar .navbar-brand {
    color: var(--orang-color);
-   font-size: 2rem;
+   font-size: 2.6rem;
    font-family: var(--lamar-font);
 }
 .navbar .nav-link {
    color: var(--color-white) !important;
+   margin: 0 0.2rem;
+   font-size: calc(20 / 16 * 1rem);
+   font-weight: 300;
+   letter-spacing: 1.5px;
    position: relative;
    cursor: pointer;
    transition: var(--transition);
@@ -94,7 +111,6 @@ a {
 }
 .navbar .nav-link.active {
    font-family: var(--lamar-font);
-   font-size: calc(18 / 16 * 1rem);
 }
 .navbar .nav-link::after {
    content: "";
@@ -109,11 +125,12 @@ a {
 }
 .navbar .nav-link.active::after {
    width: 100%;
+   right: 0;
 }
 /* ------------- Start Header ------------- */
 header {
-   min-height: calc(100vh - 90px);
-   background: url("../assets/images/header.png") no-repeat center;
+   min-height: calc(100vh - 80px);
+   background: url("../assets/images/header.png") no-repeat ;
    background-size: 100% 100%;
 }
 
@@ -123,7 +140,7 @@ header h1 {
 }
 header p {
    font-weight: 500;
-   font-size: calc(32 / 16 * 1rem);
+   font-size: calc(35 / 16 * 1rem);
 }
 /* ------------- Start slider ------------- */
 .swiper {
@@ -153,6 +170,7 @@ header p {
 /* ------------- Start about ------------- */
 .about-content p {
    font-size: 28px;
+   width: clamp(300px , 70% , 100%)
 }
 /* ------------- Start message ------------- */
 .meesage {
@@ -195,7 +213,6 @@ header p {
 /* ------------- Start Say ------------- */
 .mySwiper2 {
    background-color: var(--main-color);
-   padding: 1rem;
 }
 .mySwiper2 .swiper-slide {
    cursor: pointer;
